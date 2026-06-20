@@ -1,0 +1,135 @@
+void sortColors(int* nums, int numsSize) {
+    int low = 0;
+    int mid = 0;
+    int high = numsSize - 1;
+
+    while (mid <= high) {
+        if (nums[mid] == 0) {
+            int temp = nums[low];
+            nums[low] = nums[mid];
+            nums[mid] = temp;
+
+            low++;
+            mid++;
+        }
+        else if (nums[mid] == 1) {
+            mid++;
+        }
+        else { 
+            int temp = nums[mid];
+            nums[mid] = nums[high];
+            nums[high] = temp;
+
+            high--;
+        }
+    }
+}
+----------------------------------------------------------------------------------------------------
+int search(int* nums, int numsSize, int target) {
+    int low = 0;
+    int high = numsSize - 1;
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+
+        if (nums[mid] == target) {
+            return mid;
+        }
+        else if (nums[mid] < target) {
+            low = mid + 1;
+        }
+        else {
+            high = mid - 1;
+        }
+    }
+
+    return -1;
+}
+------------------------------------------------------------------------------------------------------
+int search(int* nums, int numsSize, int target) {
+    int i;
+
+    for (i = 0; i < numsSize; i++) {
+        if (nums[i] == target) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+------------------------------------------------------------------------------------------------------
+    int searchInsert(int* nums, int numsSize, int target) {
+    int low = 0;
+    int high = numsSize - 1;
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+
+        if (nums[mid] == target) {
+            return mid;
+        }
+        else if (nums[mid] < target) {
+            low = mid + 1;
+        }
+        else {
+            high = mid - 1;
+        }
+    }
+
+    return low;
+}
+-------------------------------------------------------------------------------------------------------
+void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
+    int i = m - 1;
+    int j = n - 1;
+    int k = m + n - 1;
+
+    while (i >= 0 && j >= 0) {
+        if (nums1[i] > nums2[j]) {
+            nums1[k] = nums1[i];
+            i--;
+        } else {
+            nums1[k] = nums2[j];
+            j--;
+        }
+        k--;
+    }
+
+    while (j >= 0) {
+        nums1[k] = nums2[j];
+        j--;
+        k--;
+    }
+}
+--------------------------------------------------------------------------------------------------------
+
+#include <stdio.h>
+
+int main() {
+    int arr[] = {5, 3, 8, 1, 2};
+    int n = 5;
+    int i, j, temp;
+
+    // Bubble Sort
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    // Print sorted array
+    printf("Sorted array: ");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+--------------------------------------------------------------------------------------------------------
+
+
